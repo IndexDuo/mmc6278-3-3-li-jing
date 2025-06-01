@@ -12,13 +12,35 @@ app.get("/api/city/:city", async (req, res) => {
         const city = req.params.city;
         const cityInfo = await getCityInfo(city);
         const jobs = await getJobs(city);
-        if (cityInfo && jobs) {
-            const result = {
+
+        //   Jobs found but no city info found
+        //     1) should return 200 status and "jobs" and "cityInfo" properties in JSON response object
+        //     2) should return 200 status and job results as under "jobs" property in JSON response object
+        //     3) should return 200 status and false for "cityInfo" property in JSON response object
+        //   City info found but no jobs found
+        //     4) should return 200 status and "jobs" and "cityInfo" properties in JSON response object
+        //     5) should return 200 status and false for "jobs" property in JSON response object
+        //     6) should return 200 status and city info in "cityInfo" property in JSON response object
+        var result;
+        if (!cityInfo && jobs) {
+            result = {
+                jobs: jobs,
+                cityInfo: false,
+            };
+            res.status(200).json(result);
+        } else if (cityInfo && !jobs) {
+            result = {
+                jobs: false,
+                cityInfo: cityInfo,
+            };
+            res.status(200).json(result);
+        } else if (cityInfo && jobs) {
+            result = {
                 jobs: jobs,
                 cityInfo: cityInfo,
             };
             // console.log(result);
-            res.send(result);
+            res.status(200).json(result);
         } else {
             res.status(404).json({ error: "no city info or jobs are found" });
         }
