@@ -1,13 +1,15 @@
-require('dotenv').config()
-const express = require('express')
-const app = express()
+require("dotenv").config();
+const express = require("express");
+const app = express();
 // TODO: import the getCityInfo and getJobs functions from util.js
-const {getCityInfo, getJobs}= require("./util.js")
+const { getCityInfo, getJobs } = require("./util.js");
 
 // TODO: Statically serve the public folder
 
 // TODO: declare the GET route /api/city/:city
-app.get("/api/city/:city")
+app.get("/api/city/:city", (req, res) => {
+    res.send("get");
+});
 
 // This endpoint should call getCityInfo and getJobs and return
 // the result as JSON.
@@ -17,4 +19,4 @@ app.get("/api/city/:city")
 // If no city info or jobs are found,
 // the endpoint should return a 404 status
 
-module.exports = app
+module.exports = app;
