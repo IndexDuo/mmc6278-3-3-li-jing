@@ -5,7 +5,6 @@ const app = express();
 const { getCityInfo, getJobs } = require("./util.js");
 
 // TODO: Statically serve the public folder
-const city = "orlando";
 
 // TODO: declare the GET route /api/city/:city
 app.get("/api/city/:city", async (req, res) => {
@@ -13,14 +12,16 @@ app.get("/api/city/:city", async (req, res) => {
         const city = req.params.city;
         const cityInfo = await getCityInfo(city);
         const jobs = await getJobs(city);
-        const result = `{jobs:${JSON.stringify(jobs)},cityInfo:${JSON.stringify(cityInfo)}}`;
-        const result2 = {
-            jobs: jobs,
-            cityInfo: cityInfo,
-        };
-        // const test = JSON.parse(result);
-        console.log(result2);
-        res.send(result2);
+        if (cityInfo || jobs) {
+            const result = {
+                jobs: jobs,
+                cityInfo: cityInfo,
+            };
+            console.log(result);
+            res.send(result);
+        } else {
+            res.status(404).send("404, no city info or jobs are found");
+        }
     } catch (err) {
         console.log(err);
     }
