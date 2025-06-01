@@ -7,6 +7,8 @@ const {getCityInfo, getJobs}= require("./util.js")
 // TODO: Statically serve the public folder
 
 // TODO: declare the GET route /api/city/:city
+app.get("/api/city/:city")
+
 // This endpoint should call getCityInfo and getJobs and return
 // the result as JSON.
 // The returned JSON object should have two keys:
