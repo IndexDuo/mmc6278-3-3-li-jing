@@ -5,7 +5,7 @@ const app = express();
 const { getCityInfo, getJobs } = require("./util.js");
 
 // TODO: Statically serve the public folder
-app.use(express.static(path.join(__dirname, "./public")));
+app.use(express.static("public"));
 // TODO: declare the GET route /api/city/:city
 app.get("/api/city/:city", async (req, res) => {
     try {
