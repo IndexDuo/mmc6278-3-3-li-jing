@@ -14,9 +14,9 @@ app.get("/api/city/:city", async (req, res) => {
         const cityInfo = await getCityInfo(city);
         const jobs = await getJobs(city);
         const result = `{cityInfo:${JSON.stringify(cityInfo)},jobs:${JSON.stringify(jobs)}}`;
-        const test = `${JSON.stringify(cityInfo)}`;
+        const test = JSON.parse(result);
         console.log(result);
-        res.send(result);
+        res.send(test);
     } catch (err) {
         console.log(err);
     }
