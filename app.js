@@ -12,7 +12,7 @@ app.get("/api/city/:city", (req, res) => {
     const city = req.params.city;
     const cityInfo = getCityInfo(city);
     console.log(cityInfo);
-    res.status(200);
+    res.send(cityInfo);
 });
 
 // This endpoint should call getCityInfo and getJobs and return
