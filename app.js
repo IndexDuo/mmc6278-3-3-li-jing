@@ -13,8 +13,9 @@ app.get("/api/city/:city", async (req, res) => {
         const city = req.params.city;
         const cityInfo = await getCityInfo(city);
         const jobs = await getJobs(city);
+        const result = `{cityInfo:${cityInfo.to},jobs:${jobs}`;
         console.log(jobs);
-        res.send(cityInfo);
+        res.send(jobs);
     } catch (err) {
         console.log(err);
     }
