@@ -12,7 +12,7 @@ app.get("/api/city/:city", async (req, res) => {
         const city = req.params.city;
         const cityInfo = await getCityInfo(city);
         const jobs = await getJobs(city);
-        if (cityInfo || jobs) {
+        if (cityInfo && jobs) {
             const result = {
                 jobs: jobs,
                 cityInfo: cityInfo,
