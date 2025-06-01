@@ -5,7 +5,7 @@ const app = express();
 const { getCityInfo, getJobs } = require("./util.js");
 
 // TODO: Statically serve the public folder
-const city = 
+const city = "orlando";
 
 // TODO: declare the GET route /api/city/:city
 app.get("/api/city/:city", (req, res) => {
