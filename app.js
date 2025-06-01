@@ -10,7 +10,8 @@ const city = "orlando";
 // TODO: declare the GET route /api/city/:city
 app.get("/api/city/:city", (req, res) => {
     const city = req.params.city;
-    console.log(city);
+    const cityInfo = getCityInfo(city);
+    console.log(cityInfo);
     res.status(200);
 });
 
