@@ -17,7 +17,7 @@ app.get("/api/city/:city", async (req, res) => {
                 jobs: jobs,
                 cityInfo: cityInfo,
             };
-            console.log(result);
+            // console.log(result);
             res.send(result);
         } else {
             res.status(404).send("404, no city info or jobs are found");
