@@ -8,11 +8,15 @@ const { getCityInfo, getJobs } = require("./util.js");
 const city = "orlando";
 
 // TODO: declare the GET route /api/city/:city
-app.get("/api/city/:city", (req, res) => {
-    const city = req.params.city;
-    const cityInfo = getCityInfo(city);
-    console.log(cityInfo);
-    res.send(cityInfo);
+app.get("/api/city/:city", async (req, res) => {
+    try {
+        const city = req.params.city;
+        const cityInfo = await getCityInfo(city);
+        console.log(cityInfo);
+        res.send(cityInfo);
+    } catch (err) {
+        console.log(err);
+    }
 });
 
 // This endpoint should call getCityInfo and getJobs and return
