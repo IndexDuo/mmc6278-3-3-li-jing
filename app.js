@@ -9,7 +9,9 @@ const city = "orlando";
 
 // TODO: declare the GET route /api/city/:city
 app.get("/api/city/:city", (req, res) => {
-    res.send("get");
+    const city = req.params.city;
+    console.log(city);
+    res.status(200);
 });
 
 // This endpoint should call getCityInfo and getJobs and return
