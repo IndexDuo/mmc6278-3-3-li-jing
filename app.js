@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 // TODO: import the getCityInfo and getJobs functions from util.js
+const {getCityInfo, getJobs}= require(util.js)
 
 // TODO: Statically serve the public folder
 
